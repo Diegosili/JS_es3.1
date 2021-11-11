@@ -1,4 +1,7 @@
 $("button").click(function(){
+    if ($("#elimina")) {
+        
+    }
     var input1 = $("#num1");
     var input2 = $("#num2");
     var sign = $(this).val();
@@ -23,9 +26,19 @@ $("button").click(function(){
                 break;
         };
 
-        var string ="<tr><td>" + n1 + "</td><td>" + sign + "</td><td>" + n2 + "</td><td>" + tot +"</td></tr>";
+        var string ="<tr><td>" + n1 + "</td><td>" + sign + "</td><td>" + n2 + "</td><td>" + tot +"</td><td><button id='elimina'>ELIMINA</button></td></tr>";
         $("#tab").append(string);
         input1.val("");
         input2.val("");
+        
+        if (localStorage.length==null) {
+            localStorage.setItem('0', string);
+        } else {
+            localStorage.setItem(localStorage.length+1, string);
+        }
     }
 });
+
+for (let i=0; i<localStorage.length; i++) {
+    $("#tab").append(localStorage.getItem(i));    
+}
