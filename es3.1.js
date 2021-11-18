@@ -1,3 +1,7 @@
+console.log("nome: ", "beppe");
+$("#tab").append(JSON.parse(localStorage))
+
+var tableArray = [];
 $("button").click(function(){
     if ($("#elimina")) {
         
@@ -27,15 +31,14 @@ $("button").click(function(){
         };
 
         var string ="<tr><td>" + n1 + "</td><td>" + sign + "</td><td>" + n2 + "</td><td>" + tot +"</td><td><button id='elimina'>ELIMINA</button></td></tr>";
+        tableArray.push(string);
+        
+        var table = localStorage.getItem("tabella");
+        localStorage.setItem(localStorage.length+1, JSON.parse(tableArray));
         $("#tab").append(string);
         input1.val("");
         input2.val("");
         
-        if (localStorage.length==null) {
-            localStorage.setItem('0', string);
-        } else {
-            localStorage.setItem(localStorage.length+1, string);
-        }
     }
 });
 
